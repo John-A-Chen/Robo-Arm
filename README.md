@@ -1,4 +1,3 @@
-```markdown
 # Robo-Arm  
 A lightweight, actuator-efficient robotic arm inspired by research-grade robotic mechanisms.  
 This repository documents the development of the arm across **Generation 1 → Generation 2**, focusing on mechanical optimisation, linkage design, and SolidWorks validation.
@@ -116,4 +115,3 @@ This project shows how mechanical optimisation and thoughtful geometry can drama
 
 ## Reference  
 Al-Fahaam, H., Davis, S., & Nefti-Meziani, S. (2020). *Design and Control of a Multi-Material Soft Robotic Arm With Embedded Fabric Sensors.* Sensors, 20(15), 4174. https://www.mdpi.com/1424-8220/20/15/4174
-```
