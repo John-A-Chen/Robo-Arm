@@ -1,136 +1,119 @@
-Robo-Arm
+```markdown
+# Robo-Arm  
+A lightweight, actuator-efficient robotic arm inspired by research-grade robotic mechanisms.  
+This repository documents the development of the arm across **Generation 1 → Generation 2**, focusing on mechanical optimisation, linkage design, and SolidWorks validation.
 
-A lightweight, actuator-efficient robotic arm inspired by research-grade biomimetic mechanisms.
-This repository documents the full development process—from Generation 1 to Generation 2—including design decisions, SolidWorks optimisation, manufacturing considerations, and validation.
+---
 
-Overview
+## Overview  
+Robo-Arm is a compact, low-cost robotic arm prototype. The design draws on ideas from:
 
-Robo-Arm is a compact, low-cost robotic arm prototype designed for education, rapid prototyping and small-scale manipulation tasks. The project was based on concepts from Sensors (MDPI):
-“Design and Control of a Multi-Material Soft Robotic Arm With Embedded Fabric Sensors” (Al-Fahaam et al., 2020)
+**Al-Fahaam, Davis & Nefti-Meziani (2020)**  
+*Design and Control of a Multi-Material Soft Robotic Arm With Embedded Fabric Sensors*  
 https://www.mdpi.com/1424-8220/20/15/4174
 
-I reverse-engineered key features of the paper’s mechanical layout—not the soft robotic actuation but the geometric approach to motion efficiency, moment distribution, and space-constrained linkage behaviour. The project’s aim was to explore how similar performance principles could be replicated with rigid-body mechanisms and hobby-grade actuators.
+I reverse-engineered aspects of the paper’s geometry—not the soft robotic materials—to understand how motion can be made more efficient through **mechanical advantage**, **distributed motion**, and **linkage ratios**.  
+The goal was to replicate the efficiency principles using rigid 3D-printed parts and hobby-grade actuators.
 
-Project Goals
+---
 
-Develop an actuator-efficient robotic arm using accessible materials and 3D printing.
+## Project Goals  
+- Develop an actuator-efficient robotic arm using simple, accessible components  
+- Improve performance by optimising a **four-bar linkage**  
+- Iterate from Gen 1 to Gen 2 with measurable improvements in range of motion  
+- Use SolidWorks simulation to validate design decisions  
+- Keep the design open-source and easy to replicate  
 
-Explore how four-bar linkages and passive geometry can amplify servo output while reducing torque load.
+---
 
-Iterate from Generation 1 to Generation 2 with improved range of motion and stability.
+## Generations
 
-Validate design choices through SolidWorks simulation and physical prototyping.
+### Generation 1  
+The baseline prototype.
 
-Document engineering decisions for open-source reproducibility.
+**Characteristics:**  
+- Unoptimised four-bar linkage  
+- Limited range of motion (especially at extremes)  
+- High torque load on the main actuator  
+- Some binding and awkward linkage angles  
+- Served mainly as a functional proof of concept  
 
-Generations
-Generation 1
+### Generation 2  
+A significantly improved design informed by SolidWorks analysis.
 
-Generation 1 served as the baseline prototype.
-Key characteristics:
+**Key Improvements:**  
+- **Optimised four-bar linkage** (better ratios + reduced binding)  
+- Smoother and larger range of motion  
+- Improved actuator efficiency  
+- Reduced structural flex and backlash  
+- Cleaner and more compact geometry  
 
-Initial four-bar linkage (unoptimised).
+---
 
-Basic servo placement.
+## Research Influence  
+Key ideas adapted from the Sensors paper include:  
+- Distributing motion across multiple joints instead of relying on one actuator  
+- Using geometry to reduce torque requirements  
+- Lightweight structural design to reduce inertia  
+- Kinematic reasoning for workspace prediction  
 
-Limited range of motion, especially near extreme angles.
+These concepts were reverse-engineered and applied to a rigid linkage system to explore whether similar efficiency gains could be achieved without soft actuators.
 
-Good proof-of-concept but inefficient torque distribution.
+---
 
-Identified weak points in joint spacing, linkage ratios and servo overloading.
+## CAD + Simulation  
+All parts were designed and refined in SolidWorks.
 
-Generation 2
+**Engineering steps included:**  
+- Four-bar mechanism optimisation  
+- Motion studies + range-of-motion analysis  
+- Interference checks  
+- Evaluating torque requirements  
+- Iterative prototyping  
 
-Generation 2 is a significant refinement, using engineering insights and simulation results.
-Improvements include:
+Planned additions:  
+- STEP files  
+- Annotated engineering drawings  
+- Assembly instructions  
+- Photos of prototypes  
 
-Optimised four-bar linkage, redesigned using SolidWorks Motion Studies.
+---
 
-Greater usable range of motion.
+## ROS / ROS2?  
+I am still uncertain whether ROS or ROS2 is necessary for a small arm like this.  
+While ROS would allow:  
+- higher-level planning  
+- simulation  
+- sensor fusion  
+- modular control  
 
-Reduced binding and dead-zones in the linkage.
+…it may also be overkill for:  
+- a small number of DOFs  
+- simple kinematic paths  
+- microcontroller-level control loops  
 
-Improved actuator efficiency through better force transmission geometry.
+For now, the project is hardware-focused, and ROS integration is a “maybe later” experiment.
 
-Cleaner cable routing and structural redesign.
+---
 
-More rigid structure → less unwanted flex and backlash.
+## Repository Structure  
+```
 
-Research Basis
+/cad            SolidWorks source files
+/stl            STL exports for printing
+/docs           Notes and references
+/src            (future) control firmware
+README.md       Documentation
 
-Although the MDPI paper focuses on soft robotics, several core ideas were adapted:
+```
 
-From the paper I adopted:
+---
 
-The concept of distributing deformation/motion across multiple joints instead of relying on a single actuator to do all the work.
+## Why This Project  
+This project shows how mechanical optimisation and thoughtful geometry can dramatically improve actuator performance, even with inexpensive hardware. Robotics is fun because it merges design, mechanics, simulation and experimentation—and iterating from Gen 1 to Gen 2 demonstrates real engineering progress.
 
-The insight that geometry can do work for you—proper linkage shape and length ratios can significantly reduce actuator strain.
+---
 
-The use of lightweight limb segments to minimise inertia and reduce required torque.
-
-Forward and inverse kinematic constraints for workspace mapping.
-
-By reverse-engineering the paper’s geometry and applying it to rigid mechanisms, this project explores whether inexpensive actuators can achieve higher performance through mechanical advantage rather than brute force.
-
-CAD, Simulation and Analysis
-
-All mechanical components were designed and iterated in SolidWorks.
-Key workflows include:
-
-SolidWorks four-bar linkage optimisation.
-
-Range-of-motion analysis.
-
-Interference checks.
-
-Torque requirement estimation.
-
-Motion study animation and kinematic validation.
-
-Future releases may include:
-
-STEP files
-
-Fully annotated engineering drawings
-
-Printed prototype photos
-
-Control firmware and microcontroller integration
-
-Repository Structure
-/cad            – SolidWorks files for each generation  
-/stl            – Exported STL files for 3D printing  
-/docs           – Notes, sketches, and reference images  
-/src            – (future) microcontroller code for actuation  
-README.md       – Project documentation  
-
-Why This Matters
-
-Robotics is cool because it sits at the intersection of design, mechanics, control theory, and creativity.
-This project aims to show that:
-
-Good engineering doesn’t require expensive parts
-
-Mechanical optimisation can outperform raw motor power
-
-Iterative design leads to genuinely better robotics performance
-
-Anyone can build research-grade mechanisms with the right approach
-
-Future Work
-
-Add sensors for closed-loop control
-
-Implement inverse kinematics for trajectory planning
-
-Experiment with tendon-driven actuation
-
-Expand DOFs with additional linkages
-
-Integrate ROS2 control pipeline
-
-Further optimise structure for strength-to-weight ratio
-
-Reference
-
-Al-Fahaam, H., Davis, S., Nefti-Meziani, S. (2020). Design and Control of a Multi-Material Soft Robotic Arm With Embedded Fabric Sensors. Sensors, 20(15), 4174. https://www.mdpi.com/1424-8220/20/15/4174
+## Reference  
+Al-Fahaam, H., Davis, S., & Nefti-Meziani, S. (2020). *Design and Control of a Multi-Material Soft Robotic Arm With Embedded Fabric Sensors.* Sensors, 20(15), 4174. https://www.mdpi.com/1424-8220/20/15/4174
+```
